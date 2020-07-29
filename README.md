@@ -5,7 +5,7 @@
 
 <h3>Setup</h3>
 <ol>
-<li>Copy the URL from the clone button above</li>
+<li>Copy the URL from the code button above</li>
 <li>In command line terminal use : git clone [paste the url copied]</li>
 </ol>
 
