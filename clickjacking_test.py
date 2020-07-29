@@ -44,12 +44,12 @@ def main():
         status=checking(site)
 
         if(status):
-            print("[+] Website is Vulnerable!!")
+            print("  [+] Website is Vulnerable!!")
             proof(site.split('\n')[0])
 
-            print("[+] Proof Created and saved as <URL>.html\n")
+            print("  [+] Proof Created and saved as <URL>.html\n")
         elif not status:
-            print("[-] Website is not Vulerable!\n")
+            print("  [-] Website is not Vulerable!\n")
 
         else:
             print("Python Crashed please Re-Launch")
