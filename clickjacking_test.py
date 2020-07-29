@@ -49,7 +49,7 @@ def main():
 
             print("  [+] Proof Created and saved as <URL>.html\n")
         elif not status:
-            print("  [-] Website is not Vulerable!\n")
+            print("  [-] Website is not Vulnerable!\n")
 
         else:
             print("Python Crashed please Re-Launch")
