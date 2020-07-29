@@ -8,17 +8,17 @@ def checking(url):
 
     try:
         if "http" not in url:
-            url="https://"+url
-            data=urlopen(url)
-            headers=data.info()
-            if "X-Frame-Options" not in headers:
-                return true
-    except :
+            url="http://"+url
+        data=urlopen(url)
+        headers=data.info()
+        if "X-Frame-Options" not in headers:
+            return true
+    except:
         return false
 
 
 def proof(url):
-    payload=""
+    payload="""
     <html>
       <head>
         <title>Click jacking test page</title>
@@ -28,30 +28,30 @@ def proof(url):
         <iframe src="{}" width="500" height="500"></iframe>
 
       </body>
-    </html> "".format(url)
+    </html> """.format(url)
     with open(url +".html" ,"w") as file:
-        file.write(code)
+        file.write(payload)
         file.close()
 
 def main():
     try:
-        sites:open(argv[1] , 'r').readlines()
+        sites=open(argv[1] , 'r').readlines()
     except:
         print("[-] Usage: python(3) clickjacking_test.py <file_name>");exit(0)
 
-        for site in sites[0:]:
-            print("\n[-] Checking " + site)
-            status=checking(site)
+    for site in sites[0:]:
+        print("\n[-] Checking " + site)
+        status=checking(site)
 
-            if(status):
-                print("[+] Website is Vulnerable!!")
-                proof(site.split(\n)[0])
+        if(status):
+            print("[+] Website is Vulnerable!!")
+            proof(site.split('\n')[0])
 
-                print("[-] Proof Created and saved as <URL>.html")
-            elif not status:
-                print("[-] Website is not Vulerable!")
+            print("[-] Proof Created and saved as <URL>.html")
+        elif not status:
+            print("[-] Website is not Vulerable!")
 
-            else:
-                print("Python Crashed please Re-Launch")
+        else:
+            print("Python Crashed please Re-Launch")
 
 if __name__=='__main__':main()
