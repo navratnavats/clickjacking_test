@@ -12,9 +12,9 @@ def checking(url):
         data=urlopen(url)
         headers=data.info()
         if "X-Frame-Options" not in headers:
-            return true
+            return True
     except:
-        return false
+        return False
 
 
 def proof(url):
@@ -37,19 +37,19 @@ def main():
     try:
         sites=open(argv[1] , 'r').readlines()
     except:
-        print("[-] Usage: python(3) clickjacking_test.py <file_name>");exit(0)
+        print("[*] Usage: python(3) clickjacking_test.py <file_name>");exit(0)
 
     for site in sites[0:]:
-        print("\n[-] Checking " + site)
+        print("[*] Checking " + site)
         status=checking(site)
 
         if(status):
             print("[+] Website is Vulnerable!!")
             proof(site.split('\n')[0])
 
-            print("[-] Proof Created and saved as <URL>.html")
+            print("[+] Proof Created and saved as <URL>.html\n")
         elif not status:
-            print("[-] Website is not Vulerable!")
+            print("[-] Website is not Vulerable!\n")
 
         else:
             print("Python Crashed please Re-Launch")
