@@ -4,7 +4,7 @@ from sys import argv,exit
 __author__="Navratna Vats"
 
 def checking(url):
-    ' to check if url is vulnerable or not'
+    "to check if url is vulnerable or not"
 
     try:
         if "http" not in url:
